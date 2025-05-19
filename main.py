@@ -1,23 +1,25 @@
-from Filosofo import Filosofo
-from Jantar import JantarDosFilosofos
+# main.py
+import pygame
+
 from Interface import InterfaceJantar
 
+pygame.init()
+WIDTH, HEIGHT = 900,600
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Jantar dos Filósofos")
+font = pygame.font.SysFont('Roboto', 18)
+
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 30, 0)
+GREEN = (51, 204, 102)
+BLUE = (102, 153, 255)
+YELLOW = (255, 255, 153)
+
+
 def main():
-    #configuração do jantar
-    num_filosofos = 5
-    jantar = JantarDosFilosofos(num_filosofos)
-    
-    #configuração da interface
-    interface = InterfaceJantar(jantar)
-    jantar.registrar_observador(interface)
-    
-    #criação dos filósofos
-    filosofos = [Filosofo(i, jantar) for i in range(num_filosofos)]
-    
-    for f in filosofos:
-        f.start()
-    
-    interface.executar()
+    jantar = InterfaceJantar(screen, font, WIDTH, HEIGHT, WHITE, BLACK, RED, GREEN, BLUE, YELLOW)
+    jantar.iniciar_jantar()
 
 if __name__ == "__main__":
     main()
