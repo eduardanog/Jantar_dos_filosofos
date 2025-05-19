@@ -105,13 +105,13 @@ class InterfaceJantar:
             self.screen.blit(garfo_rotacionado, rect)
 
         
-        legenda_y = 15
+        legenda_y = 480
         for estado, cor in self.estados_cores.items():
             nome = ["Pensando", "Faminto", "Comendo"][estado]
             pygame.draw.rect(self.screen, cor, (20, legenda_y, 15, 15))
             texto = self.font.render(nome, True, self.BLACK)
             self.screen.blit(texto, (50, legenda_y))
-            legenda_y += 30
+            legenda_y += 40
 
     def iniciar_jantar(self):
         for i in range(N):
