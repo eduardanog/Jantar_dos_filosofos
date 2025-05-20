@@ -1,4 +1,3 @@
-# main.py
 import pygame
 
 from Interface import InterfaceJantar
@@ -9,16 +8,16 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Jantar dos Filósofos")
 font = pygame.font.SysFont('Roboto', 18)
 
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 30, 0)
-GREEN = (51, 204, 102)
-BLUE = (102, 153, 255)
-YELLOW = (255, 255, 153)
+branco = (255, 255, 255)
+preto = (0, 0, 0)
+vermelho = (255, 30, 0)
+verde = (51, 204, 102)
+azul = (102, 153, 255)
+amarelo = (255, 255, 153)
 
 
 def main():
-    jantar = InterfaceJantar(screen, font, WIDTH, HEIGHT, WHITE, BLACK, RED, GREEN, BLUE, YELLOW)
+    jantar = InterfaceJantar(screen, font, WIDTH, HEIGHT, branco, preto, vermelho, verde, azul, amarelo)
     jantar.iniciar_jantar()
 
 if __name__ == "__main__":

@@ -1,4 +1,3 @@
-# jantar_filosofos.py
 import threading
 import random
 import time
@@ -10,17 +9,17 @@ PENSANDO, FAMINTO, COMENDO = 0, 1, 2
 N = 5
 
 class InterfaceJantar:
-    def __init__(self, screen, font, width, height, WHITE, BLACK, RED, GREEN, BLUE, YELLOW):
+    def __init__(self, screen, font, width, height, branco, preto, vermelho, verde, azul, amarelo):
         self.screen = screen
         self.font = font
         self.WIDTH = width
         self.HEIGHT = height
-        self.WHITE = WHITE
-        self.BLACK = BLACK
-        self.RED = RED
-        self.GREEN = GREEN
-        self.BLUE = BLUE
-        self.YELLOW = YELLOW
+        self.branco = branco
+        self.preto = preto
+        self.vermelho = vermelho
+        self.verde = verde
+        self.azul = azul
+        self.amarelo = amarelo
 
         self.centro = (width // 2, height // 2)
         self.raio_mesa = 210
@@ -28,7 +27,7 @@ class InterfaceJantar:
         self.raio_garfos = 180
 
         self.estados = [PENSANDO] * N
-        self.estados_cores = {PENSANDO: self.BLUE, FAMINTO: self.RED, COMENDO: self.GREEN}
+        self.estados_cores = {PENSANDO: self.azul, FAMINTO: self.vermelho, COMENDO: self.verde}
         self.mutex = threading.Semaphore(1)
         self.semaforos = [threading.Semaphore(0) for _ in range(N)]
 
@@ -79,13 +78,13 @@ class InterfaceJantar:
             self.largar_garfos(i)
 
     def desenhar_mesa(self):
-        pygame.draw.circle(self.screen, self.YELLOW, self.centro, self.raio_mesa)
+        pygame.draw.circle(self.screen, self.amarelo, self.centro, self.raio_mesa)
         
         for i in range(N):
             pos = self.calcular_posicao(i, self.raio_filosofos)
             cor = self.estados_cores[self.estados[i]]
             pygame.draw.circle(self.screen, cor, pos, 25)
-            texto = self.font.render(f"FL {i}", True, self.BLACK)
+            texto = self.font.render(f"FL {i}", True, self.preto)
             self.screen.blit(texto, (pos[0] - 12, pos[1] - 7))
         
         import math
@@ -109,7 +108,7 @@ class InterfaceJantar:
         for estado, cor in self.estados_cores.items():
             nome = ["Pensando", "Faminto", "Comendo"][estado]
             pygame.draw.rect(self.screen, cor, (20, legenda_y, 15, 15))
-            texto = self.font.render(nome, True, self.BLACK)
+            texto = self.font.render(nome, True, self.preto)
             self.screen.blit(texto, (50, legenda_y))
             legenda_y += 40
 
@@ -125,7 +124,7 @@ class InterfaceJantar:
                 if event.type == QUIT:
                     running = False
             
-            self.screen.fill(self.WHITE)
+            self.screen.fill(self.branco)
             self.desenhar_mesa()
             pygame.display.flip()
             clock.tick(30)
