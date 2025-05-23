@@ -1,3 +1,5 @@
+#Dupla: MARIA EDUARDA NOGUEIRA FREITAS (536868)
+#FRANCISCO JOSE VIEIRA DE LIMA (537953) 
 import pygame
 
 from Interface import InterfaceJantar
